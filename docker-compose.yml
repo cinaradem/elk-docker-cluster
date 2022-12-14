@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  docker40:
+  elastic40:
     build:
       context: elasticsearch/
       args:
@@ -15,9 +15,9 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      - node.name=docker40
-      - discovery.seed_hosts=docker41
-      - cluster.initial_master_nodes=docker40,docker41,docker42
+      - node.name=elastic40
+      - discovery.seed_hosts=elastic41
+      - cluster.initial_master_nodes=elastic40,elastic41,elastic42
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
       - ELASTIC_PASSWORD=123456
@@ -30,7 +30,7 @@ services:
         hard: -1
     network_mode: "host"
 
-  docker41:
+  elastic41:
     build:
       context: elasticsearch/
       args:
@@ -42,9 +42,9 @@ services:
         read_only: true
       - /elastic:/usr/share/elasticsearch/data
     environment:
-      - node.name=docker41
-      - discovery.seed_hosts=docker40
-      - cluster.initial_master_nodes=docker40,docker41,docker42
+      - node.name=elastic41
+      - discovery.seed_hosts=elastic40
+      - cluster.initial_master_nodes=elastic40,elastic41,elastic42
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
       - ELASTIC_PASSWORD=123456
@@ -56,7 +56,7 @@ services:
         hard: -1
     network_mode: "host"
 
-  docker42:
+  elastic42:
     build:
       context: elasticsearch/
       args:
@@ -68,9 +68,9 @@ services:
         read_only: true
       - /elastic:/usr/share/elasticsearch/data
     environment:
-      - node.name=docker42
-      - discovery.seed_hosts=docker40
-      - cluster.initial_master_nodes=docker40,docker41,docker42
+      - node.name=elastic42
+      - discovery.seed_hosts=elastic40
+      - cluster.initial_master_nodes=elastic40,elastic41,elastic42
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
       - ELASTIC_PASSWORD=123456
@@ -81,7 +81,7 @@ services:
         soft: -1
         hard: -1
     network_mode: "host"
-  kibana2:
+  kibana:
     build:
       context: kibana/
       args:
@@ -97,8 +97,8 @@ services:
     ports:
       - 5601:5601
     # depends_on:
-    #   - docker40
-    #   - docker41
+    #   - elastic40
+    #   - elastic41
     network_mode: "host"
 
   # web_server:

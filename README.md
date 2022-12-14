@@ -1,8 +1,10 @@
+sudo apt install git
+
 git clone https://github.com/cinaradem/elk-docker-cluster.git
-ELASTICSEARCH_DATA="/elastic/"
+<!-- ELASTICSEARCH_DATA="/elastic/"
 sudo rm -rf $ELASTICSEARCH_DATA
 sudo mkdir $ELASTICSEARCH_DATA
-sudo chown -R 1000:1000 $ELASTICSEARCH_DATA
+sudo chown -R 1000:1000 $ELASTICSEARCH_DATA -->
 sudo chmod +x install.sh
 .\install.sh
 
@@ -11,7 +13,8 @@ vm.max_map_count = 262144
 sudo reboot
 
 ## Run
-`docker-compose up -d`
+sudo docker-compose up docker40
+sudo docker-compose up -d docker40
 sudo docker-compose stop
 docker-compose rm -f
 
