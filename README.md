@@ -1,10 +1,10 @@
 sudo apt install git
 
 git clone https://github.com/cinaradem/elk-docker-cluster.git
-<!-- ELASTICSEARCH_DATA="/elastic/"
+ELASTICSEARCH_DATA="/elastic/"
 sudo rm -rf $ELASTICSEARCH_DATA
 sudo mkdir $ELASTICSEARCH_DATA
-sudo chown -R 1000:1000 $ELASTICSEARCH_DATA -->
+sudo chown -R 1000:1000 $ELASTICSEARCH_DATA
 sudo chmod +x install.sh
 .\install.sh
 

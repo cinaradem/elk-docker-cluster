@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  elastic40:
+  es1:
     build:
       context: elasticsearch/
       args:
@@ -30,7 +30,7 @@ services:
         hard: -1
     network_mode: "host"
 
-  elastic41:
+  es2:
     build:
       context: elasticsearch/
       args:
@@ -56,7 +56,7 @@ services:
         hard: -1
     network_mode: "host"
 
-  elastic42:
+  es3:
     build:
       context: elasticsearch/
       args:
