@@ -15,8 +15,11 @@ sudo reboot
 ## Run
 sudo docker-compose up docker40
 sudo docker-compose up -d docker40
+gi
 sudo docker-compose stop
-docker-compose rm -f
-
+sudo docker-compose rm -f
+git stash
+git pull
+sudo docker-compose up docker40
 
 curl -XPOST 'localhost:9200/my_index/my_type/_update_by_query?conflicts=proceed&wait_for=true'
