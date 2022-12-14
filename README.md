@@ -20,6 +20,6 @@ sudo docker-compose stop
 sudo docker-compose rm -f
 git stash
 git pull
-sudo docker-compose up docker40
+sudo docker-compose up es1
 
 curl -XPOST 'localhost:9200/my_index/my_type/_update_by_query?conflicts=proceed&wait_for=true'
