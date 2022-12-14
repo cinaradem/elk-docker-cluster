@@ -12,6 +12,10 @@ sudo nano /etc/sysctl.conf
 vm.max_map_count = 262144
 sudo reboot
 
+
+
+ilk kurulumda da kapat       - xpack.security.transport.ssl.enabled=true
+sonra aç
 ## Run
 sudo docker-compose up docker40
 sudo docker-compose up -d docker40

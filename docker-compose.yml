@@ -22,7 +22,7 @@ services:
       - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
       - ELASTIC_PASSWORD=123456
       - xpack.security.enabled=true
-      # - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.enabled=true
       # - xpack.security.transport.ssl.verification_mode= certificate
       # - xpack.security.transport.ssl.keystore.path= elastic-certificates.p12
       # - xpack.security.transport.ssl.truststore.path= elastic-certificates.p12
@@ -51,7 +51,7 @@ services:
       - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
       - ELASTIC_PASSWORD=123456
       - xpack.security.enabled=true
-      # - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.enabled=true
       # - xpack.security.transport.ssl.verification_mode= certificate
       # - xpack.security.transport.ssl.keystore.path= elastic-certificates.p12
       # - xpack.security.transport.ssl.truststore.path= elastic-certificates.p12
@@ -80,7 +80,7 @@ services:
       - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
       - ELASTIC_PASSWORD=123456
       - xpack.security.enabled=true
-      # - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.enabled=true
       # - xpack.security.transport.ssl.verification_mode= certificate
       # - xpack.security.transport.ssl.keystore.path= elastic-certificates.p12
       # - xpack.security.transport.ssl.truststore.path= elastic-certificates.p12
