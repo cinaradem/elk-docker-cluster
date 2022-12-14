@@ -64,7 +64,7 @@ services:
       - 5601:5601
     depends_on:
       - docker1
-      - docker2
+    #   - docker2
     network_mode: "host"
 
   # web_server:
