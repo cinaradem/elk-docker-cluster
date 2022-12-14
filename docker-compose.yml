@@ -49,7 +49,7 @@ services:
         hard: -1
     network_mode: "host"
 
-  kibana:
+  kibana1:
     build:
       context: kibana/
       args:
