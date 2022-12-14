@@ -23,6 +23,7 @@ services:
       - ELASTIC_PASSWORD=123456
       - xpack.security.enabled=true
       - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=none
 
     ulimits:
       memlock:
@@ -50,6 +51,7 @@ services:
       - ELASTIC_PASSWORD=123456
       - xpack.security.enabled=true
       - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=none
     ulimits:
       memlock:
         soft: -1
@@ -76,6 +78,8 @@ services:
       - ELASTIC_PASSWORD=123456
       - xpack.security.enabled=true
       - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=none
+
     ulimits:
       memlock:
         soft: -1
