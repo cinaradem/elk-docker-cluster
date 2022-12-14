@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  docker1:
+  docker40:
     build:
       context: elasticsearch/
       args:
@@ -15,9 +15,9 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      - node.name=docker1
-      - discovery.seed_hosts=docker2
-      - cluster.initial_master_nodes=docker1,docker2
+      - node.name=docker40
+      - discovery.seed_hosts=docker41
+      - cluster.initial_master_nodes=docker40,docker41,docker42
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
       - ELASTIC_PASSWORD=123456
@@ -30,7 +30,7 @@ services:
         hard: -1
     network_mode: "host"
 
-  docker2:
+  docker41:
     build:
       context: elasticsearch/
       args:
@@ -42,9 +42,9 @@ services:
         read_only: true
       - /elastic:/usr/share/elasticsearch/data
     environment:
-      - node.name=docker2
-      - discovery.seed_hosts=docker1
-      - cluster.initial_master_nodes=docker1,docker2
+      - node.name=docker41
+      - discovery.seed_hosts=docker40
+      - cluster.initial_master_nodes=docker40,docker41,docker42
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
       - ELASTIC_PASSWORD=123456
@@ -56,6 +56,31 @@ services:
         hard: -1
     network_mode: "host"
 
+  docker42:
+    build:
+      context: elasticsearch/
+      args:
+        ELK_VERSION: 7.17.8
+    volumes:
+      - type: bind
+        source: ./elasticsearch/elasticsearch.yml
+        target: /usr/share/elasticsearch/config/elasticsearch.yml
+        read_only: true
+      - /elastic:/usr/share/elasticsearch/data
+    environment:
+      - node.name=docker42
+      - discovery.seed_hosts=docker40
+      - cluster.initial_master_nodes=docker40,docker41,docker42
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
+      - ELASTIC_PASSWORD=123456
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    network_mode: "host"
   kibana2:
     build:
       context: kibana/
@@ -72,8 +97,8 @@ services:
     ports:
       - 5601:5601
     # depends_on:
-    #   - docker1
-    #   - docker2
+    #   - docker40
+    #   - docker41
     network_mode: "host"
 
   # web_server:
