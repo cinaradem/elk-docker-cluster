@@ -61,8 +61,8 @@ services:
         read_only: true
     ports:
       - 5601:5601
-    depends_on:
-      - docker1
+    # depends_on:
+    #   - docker1
     #   - docker2
     network_mode: "host"
 
