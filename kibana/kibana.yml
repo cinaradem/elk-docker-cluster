@@ -6,7 +6,7 @@ server:
   rewriteBasePath: true
 
 # When enabling encryption between Kibana and Elasticsearch, change "http" to "https" below:
-elasticsearch.hosts: ["http://elasticsearch01:9200"]
+elasticsearch.hosts: ["http://docker1:9200"]
 
 xpack.monitoring.ui.container.elasticsearch.enabled: true
 
