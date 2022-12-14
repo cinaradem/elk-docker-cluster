@@ -4,14 +4,13 @@ services:
     build:
       context: elasticsearch/
       args:
-        ELK_VERSION: ${ELK_VERSION:-7.10.1}
-        ELASTICSEARCH_DATA: ${ELASTICSEARCH_DATA:-/data}
+        ELK_VERSION: -7.10.1
     volumes:
       - type: bind
         source: ./elasticsearch/elasticsearch.yml
         target: /usr/share/elasticsearch/config/elasticsearch.yml
         read_only: true
-      - ${ELASTICSEARCH_DATA}/docker1:/usr/share/elasticsearch/data
+      - /elastic/docker1:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -37,7 +36,7 @@ services:
         source: ./elasticsearch/elasticsearch.yml
         target: /usr/share/elasticsearch/config/elasticsearch.yml
         read_only: true
-      - ${ELASTICSEARCH_DATA}/docker2:/usr/share/elasticsearch/data
+      - /elastic/docker2:/usr/share/elasticsearch/data
     environment:
       - node.name=docker2
       - discovery.seed_hosts=docker1
