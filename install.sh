@@ -25,5 +25,5 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.27.1/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 mkdir  $ELASTICSEARCH_DATA
-sudo chown -R 1000:1000 $ELASTICSEARCH_DATA
+sudo chown -R 1000:1000 /elastic
 
