@@ -23,7 +23,7 @@ sudo apt-get remove docker-compose
 sudo curl -L "https://github.com/docker/compose/releases/download/1.27.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-$ELASTICSEARCH_DATA=
-/data/docker1
+
+sudo chown -R 1000:1000 /data/docker1
 
   sudo docker run hello-world

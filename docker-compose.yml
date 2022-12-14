@@ -20,7 +20,7 @@ services:
       - discovery.seed_hosts=docker2
       - cluster.initial_master_nodes=docker1,docker2
       - bootstrap.memory_lock=true
-      #- "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
+      - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
     ulimits:
       memlock:
         soft: -1
@@ -43,7 +43,7 @@ services:
       - discovery.seed_hosts=docker1
       - cluster.initial_master_nodes=docker1,docker2
       - bootstrap.memory_lock=true
-      #- "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
+      - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
     ulimits:
       memlock:
         soft: -1
