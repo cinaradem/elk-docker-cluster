@@ -2,7 +2,7 @@ server:
   name: "elk"
   host: "0.0.0.0"
   port: 5601
-  # basePath: /kibana
+  basePath: /
   rewriteBasePath: true
 
 # When enabling encryption between Kibana and Elasticsearch, change "http" to "https" below:
