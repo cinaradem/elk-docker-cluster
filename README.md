@@ -11,7 +11,8 @@ sudo reboot
 
 ## Run
 `docker-compose up -d`
-
+sudo docker-compose stop
+docker-compose rm -f
 
 
 curl -XPOST 'localhost:9200/my_index/my_type/_update_by_query?conflicts=proceed&wait_for=true'
