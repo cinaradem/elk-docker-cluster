@@ -25,6 +25,7 @@ services:
       memlock:
         soft: -1
         hard: -1
+    network_mode: "host"
 
   docker2:
     build:
@@ -47,6 +48,7 @@ services:
       memlock:
         soft: -1
         hard: -1
+    network_mode: "host"
 
   kibana:
     build:
@@ -63,6 +65,7 @@ services:
     depends_on:
       - docker1
       - docker2
+    network_mode: "host"
 
   # web_server:
   #   build:
