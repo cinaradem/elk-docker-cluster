@@ -1,4 +1,4 @@
-sudo apt install git
+sudo yum install git
 
 git clone https://github.com/cinaradem/elk-docker-cluster.git
 ELASTICSEARCH_DATA="/elastic/"
@@ -9,7 +9,7 @@ sudo chmod +x install.sh
 .\install.sh
 
 sudo nano /etc/sysctl.conf
-vm.max_map_count = 262144
+
 sudo reboot
 
 
@@ -17,7 +17,7 @@ sudo reboot
 ilk kurulumda da kapat       - xpack.security.transport.ssl.enabled=true
 sonra aç
 ## Run
-sudo docker-compose up docker40
+sudo docker-compose up es2
 sudo docker-compose up -d docker40
 gi
 sudo docker-compose stop
