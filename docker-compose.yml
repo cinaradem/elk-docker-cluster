@@ -23,9 +23,9 @@ services:
       - ELASTIC_PASSWORD=E!s!39-k4=8
       - xpack.security.enabled=true
       - xpack.security.transport.ssl.enabled=true
-      - xpack.security.transport.ssl.verification_mode= certificate
-      - xpack.security.transport.ssl.keystore.path= elastic-certificates.p12
-      - xpack.security.transport.ssl.truststore.path= elastic-certificates.p12
+      # - xpack.security.transport.ssl.verification_mode= certificate
+      # - xpack.security.transport.ssl.keystore.path= elastic-certificates.p12
+      # - xpack.security.transport.ssl.truststore.path= elastic-certificates.p12
     ulimits:
       memlock:
         soft: -1
@@ -51,9 +51,9 @@ services:
       - ELASTIC_PASSWORD=E!s!39-k4=8
       - xpack.security.enabled=true
       - xpack.security.transport.ssl.enabled=true
-      - xpack.security.transport.ssl.verification_mode= certificate
-      - xpack.security.transport.ssl.keystore.path= elastic-certificates.p12
-      - xpack.security.transport.ssl.truststore.path= elastic-certificates.p12
+      # - xpack.security.transport.ssl.verification_mode= certificate
+      # - xpack.security.transport.ssl.keystore.path= elastic-certificates.p12
+      # - xpack.security.transport.ssl.truststore.path= elastic-certificates.p12
     ulimits:
       memlock:
         soft: -1
