@@ -15,9 +15,9 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      - node.name=TRDCSRVELP001
-      - discovery.seed_hosts=TRDCSRVELP002
-      - cluster.initial_master_nodes=TRDCSRVELP001,TRDCSRVELP002
+      - node.name=elastic40
+      - discovery.seed_hosts=elastic41
+      - cluster.initial_master_nodes=elastic40,elastic41,elastic42
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
       - ELASTIC_PASSWORD=E!s!39-k4=8
@@ -31,6 +31,7 @@ services:
         soft: -1
         hard: -1
     network_mode: "host"
+
   es2:
     build:
       context: elasticsearch/
@@ -43,9 +44,9 @@ services:
         read_only: true
       - /elastic:/usr/share/elasticsearch/data
     environment:
-      - node.name=TRDCSRVELP002
-      - discovery.seed_hosts=TRDCSRVELP001
-      - cluster.initial_master_nodes=TRDCSRVELP001,TRDCSRVELP002
+      - node.name=elastic41
+      - discovery.seed_hosts=elastic40
+      - cluster.initial_master_nodes=elastic40,elastic41,elastic42
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
       - ELASTIC_PASSWORD=E!s!39-k4=8
@@ -60,35 +61,35 @@ services:
         hard: -1
     network_mode: "host"
 
-  # es3:
-  #   build:
-  #     context: elasticsearch/
-  #     args:
-  #       ELK_VERSION: 7.10.1
-  #   volumes:
-  #     - type: bind
-  #       source: ./elasticsearch/elasticsearch.yml
-  #       target: /usr/share/elasticsearch/config/elasticsearch.yml
-  #       read_only: true
-  #     - /elastic:/usr/share/elasticsearch/data
-  #   environment:
-  #     - node.name=elastic42
-  #     - discovery.seed_hosts=TRDCSRVELP001
-  #     - cluster.initial_master_nodes=TRDCSRVELP001,TRDCSRVELP002,elastic42
-  #     - bootstrap.memory_lock=true
-  #     - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
-  #     - ELASTIC_PASSWORD=E!s!39-k4=8
-  #     - xpack.security.enabled=true
-  #     # - xpack.security.transport.ssl.enabled=true
-  #     # - xpack.security.transport.ssl.verification_mode= certificate
-  #     # - xpack.security.transport.ssl.keystore.path= elastic-certificates.p12
-  #     # - xpack.security.transport.ssl.truststore.path= elastic-certificates.p12
+  es3:
+    build:
+      context: elasticsearch/
+      args:
+        ELK_VERSION: 7.10.1
+    volumes:
+      - type: bind
+        source: ./elasticsearch/elasticsearch.yml
+        target: /usr/share/elasticsearch/config/elasticsearch.yml
+        read_only: true
+      - /elastic:/usr/share/elasticsearch/data
+    environment:
+      - node.name=elastic42
+      - discovery.seed_hosts=elastic40
+      - cluster.initial_master_nodes=elastic40,elastic41,elastic42
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
+      - ELASTIC_PASSWORD=E!s!39-k4=8
+      - xpack.security.enabled=true
+      # - xpack.security.transport.ssl.enabled=true
+      # - xpack.security.transport.ssl.verification_mode= certificate
+      # - xpack.security.transport.ssl.keystore.path= elastic-certificates.p12
+      # - xpack.security.transport.ssl.truststore.path= elastic-certificates.p12
 
-  #   ulimits:
-  #     memlock:
-  #       soft: -1
-  #       hard: -1
-  #   network_mode: "host"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    network_mode: "host"
   kibana:
     build:
       context: kibana/
@@ -105,8 +106,8 @@ services:
     ports:
       - 5601:5601
     # depends_on:
-    #   - TRDCSRVELP001
-    #   - TRDCSRVELP002
+    #   - elastic40
+    #   - elastic41
     network_mode: "host"
 
   # web_server:
