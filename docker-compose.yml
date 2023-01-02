@@ -16,7 +16,7 @@ services:
       - "9300:9300"
     environment:
       - node.name=TRDCSRVELP001
-      - discovery.seed_hosts=TRDCSRVELP002
+      - discovery.seed_hosts=TRDCSRVELP001
       - cluster.initial_master_nodes=TRDCSRVELP001,TRDCSRVELP002
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-2g} -Xmx${ES_HEAP_SIZE:-2g}"
